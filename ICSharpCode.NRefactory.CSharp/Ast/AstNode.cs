@@ -160,6 +160,13 @@ namespace ICSharpCode.NRefactory.CSharp
 				flags |= frozenBit;
 			}
 		}
+
+		public void Unfreeze()
+		{
+			flags &= ~frozenBit; // unfreeze the copy
+			for (AstNode child = firstChild; child != null; child = child.nextSibling)
+				child.Unfreeze();
+		}
 		
 		protected void ThrowIfFrozen()
 		{

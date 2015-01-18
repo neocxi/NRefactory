@@ -55,8 +55,8 @@ namespace ICSharpCode.NRefactory.ConsistencyCheck
 						case "{2150E333-8FDC-42A3-9474-1A3956D46DE8}": // Solution Folder
 							// ignore folders
 							break;
-						case "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}": // C# project
-							Projects.Add(new CSharpProject(this, title, Path.Combine(Directory, location)));
+            case "{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}": // C# project
+              Projects.Add(new CSharpProject(this, title, Path.Combine(Directory, location.SystemSensitivePath())));
 							break;
 						default:
 							Console.WriteLine("Project {0} has unsupported type {1}", location, typeGuid);
