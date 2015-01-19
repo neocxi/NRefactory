@@ -122,6 +122,10 @@ namespace ICSharpCode.NRefactory.ConsistencyCheck
 			pc = pc.AddOrUpdateFiles(Files.Select(f => f.UnresolvedTypeSystemForFile));
 			
       // TODO: add assembly resolution
+
+      var mscorlib = typeof(object).Assembly.Location;
+      pc = pc.AddAssemblyReferences(new [] { solution.LoadAssembly(mscorlib) });
+
 //			// Add referenced assemblies:
 //			foreach (string assemblyFile in ResolveAssemblyReferences(msbuildProject)) {
 //				IUnresolvedAssembly assembly = solution.LoadAssembly(assemblyFile);
